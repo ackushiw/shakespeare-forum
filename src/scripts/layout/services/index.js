@@ -2,7 +2,6 @@
 
 module.exports = function(app) {
   // inject:start
-  require('./home-page.directive')(app);
-  require('./resize.directive')(app);
+  require('./famous.service')(app);
   // inject:end
 };

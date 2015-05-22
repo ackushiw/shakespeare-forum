@@ -2,19 +2,18 @@
 var controllername = 'main';
 
 module.exports = function(app) {
-    /*jshint validthis: true */
+  /*jshint validthis: true */
 
-    var deps = [];
+  var deps = ['main.layout.famous'];
 
-    function controller() {
-        var vm = this;
-        vm.message = 'Hello World';
-        var activate = function() {
+  function controller(famousLayout) {
+    var vm = this;
 
-        };
-        activate();
+    vm.setDimensions = function (width, height) {
+      famousLayout.set(width, height);
     }
+  }
 
-    controller.$inject = deps;
-    app.controller(app.name + '.' + controllername, controller);
+  controller.$inject = deps;
+  app.controller(app.name + '.' + controllername, controller);
 };

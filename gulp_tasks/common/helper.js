@@ -14,7 +14,7 @@ var path = require('path');
  * @returns {Boolean} - True if the target app is mobile, false otherwise
  */
 var isMobile = function(constants) {
-    return fs.existsSync('./' + constants.clientFolder + '/config' + constants.targetSuffix + '.xml');
+  return fs.existsSync('./' + constants.clientFolder + '/config' + constants.targetSuffix + '.xml');
 };
 
 /**
@@ -24,37 +24,37 @@ var isMobile = function(constants) {
  * @param  {String} stderr - The stderr string
  */
 var execHandler = function(err, stdout, stderr) {
-    if(err) {
-        gutil.log(chalk.red('An error occured executing a command line action'));
-    }
-    if(stdout) {
-        gutil.log(stdout);
-    }
-    if(stderr) {
-        gutil.log(chalk.red('Error: ') + stderr);
-    }
+  if(err) {
+    gutil.log(chalk.red('An error occured executing a command line action'));
+  }
+  if(stdout) {
+    gutil.log(stdout);
+  }
+  if(stderr) {
+    gutil.log(chalk.red('Error: ') + stderr);
+  }
 };
 
 var readTextFile = function(filename) {
-    var body = fs.readFileSync(filename, 'utf8');
-    return body;
+  var body = fs.readFileSync(filename, 'utf8');
+  return body;
 };
 
 var readJsonFile = function(filename) {
-    var body = readTextFile(filename);
-    return JSON.parse(stripJsonComments(body));
+  var body = readTextFile(filename);
+  return JSON.parse(stripJsonComments(body));
 };
 
 var filterFiles = function(files, extension) {
-    return _.filter(files, function(file) {
-        return path.extname(file) === extension;
-    });
+  return _.filter(files, function(file) {
+    return path.extname(file) === extension;
+  });
 };
 
 module.exports = {
-    isMobile: isMobile,
-    execHandler: execHandler,
-    readTextFile: readTextFile,
-    readJsonFile: readJsonFile,
-    filterFiles: filterFiles
+  isMobile: isMobile,
+  execHandler: execHandler,
+  readTextFile: readTextFile,
+  readJsonFile: readJsonFile,
+  filterFiles: filterFiles
 };

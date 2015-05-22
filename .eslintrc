@@ -16,9 +16,9 @@
   },
   "rules": {
     "camelcase": 0,
-    "complexity": [0,11],
+    "complexity": [0, 11],
     "consistent-return": 2,
-    "consistent-this": [1,  "that"],
+    "consistent-this": [1, "that"],
     "curly": [2, "all"],
     "dot-notation": 2,
     "eol-last": 0,
@@ -93,16 +93,27 @@
     "no-undef-init": 2,
     "no-underscore-dangle": 0,
     "no-unreachable": 2,
-    "no-unused-vars": [2, {"args": "none", "vars": "local"}],
+    "no-unused-vars": [2, {
+      "args": "none",
+      "vars": "local"
+    }],
     "no-use-before-define": 2,
-    "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
+    "no-warning-comments": [1, {
+      "terms": ["todo", "fixme", "xxx"],
+      "location": "start"
+    }],
     "no-with": 2,
     "no-wrap-func": 2,
     "quotes": [2, "single"],
     "semi": 2,
     "strict": 2,
     "use-isnan": 2,
-    "valid-jsdoc": [2, { "prefer": { "return": "returns" }, "requireReturn": false }],
+    "valid-jsdoc": [2, {
+      "prefer": {
+        "return": "returns"
+      },
+      "requireReturn": false
+    }],
     "valid-typeof": 2,
     "wrap-iife": [2, "any"],
     "yoda": "never"

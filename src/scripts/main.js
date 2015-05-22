@@ -5,14 +5,13 @@ var namespace = 'main';
 var angular = require('angular');
 require('angular-material');
 var app = angular.module(namespace, ['ngMaterial',
-    // inject:modules start
-    require('./layout')(namespace).name
-    // inject:modules end
+  // inject:modules start
+  require('./layout')(namespace).name
+  // inject:modules end
 ]);
 
 var runDeps = [];
-var run = function() {
-};
+var run = function() {};
 
 run.$inject = runDeps;
 app.run(run);
