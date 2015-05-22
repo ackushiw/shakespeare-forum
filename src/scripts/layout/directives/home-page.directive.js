@@ -5,19 +5,26 @@ var directivename = 'homePage';
 module.exports = function(app) {
 
   // controller
-  var controllerDeps = ['$famous'];
-  var controller = function($famous) {
+  var controllerDeps = ['$famous', 'main.layout.famous', '$log'];
+  var controller = function($famous, famousLayout, $log) {
     var homePageCtrl = this;
     var vm = homePageCtrl;
 
     //famous
+    famousLayout.get().then(function (dimensions) {
+      $log.log(dimensions);
+    });
     var EventHandler = $famous['famous/core/EventHandler'];
 
     vm.eventsScroll = new EventHandler();
-
-    vm.setDimensions = function () {
-      console.log('resized');
+    vm.test = function () {
+      famousLayout.getDevice().then(function (data) {
+        $log.log('button test', data);
+      });
     };
+
+
+
     // vm.grid.options = {
     //   dimensions: [2,2]
     // };
@@ -28,8 +35,8 @@ module.exports = function(app) {
   /*eslint-disable consistent-this */
 
   // directive
-  var directiveDeps = [];
-  var directive = function() {
+  var directiveDeps = ['main.layout.famous'];
+  var directive = function(famousLayout) {
     return {
       restrict: 'AE',
       scope: {
@@ -45,10 +52,7 @@ module.exports = function(app) {
 
           },
           post: function(scope, element, attrs) {
-            scope.$on('resize', function($event) {
 
-              scope.homePageCtrl.setDimensions($event);
-            });
           }
         };
       }

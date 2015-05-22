@@ -51,29 +51,15 @@
     </fa-view>
   </fa-modifier>
 
-  <!-- <fa-modifier fa-translate="[0,180,50]" fa-size="[undefined, 500]">
-    <fa-grid-layout fa-options="homePageCtrl.grid.options">
-      <fa-modifier>
-        <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
-      </fa-modifier>
-      <fa-modifier>
-        <fa-surface class="full-height" fa-background-color="'red'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
-      </fa-modifier>
-      <fa-modifier>
-        <fa-surface class="full-height" fa-background-color="'blue'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
-      </fa-modifier>
-      <fa-modifier>
-        <fa-surface class="full-height" fa-background-color="'gold'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
-      </fa-modifier>
-    </fa-grid-layout>
-  </fa-modifier> -->
   <fa-modifier fa-translate="[0,180,50]" fa-size="[undefined, 500]">
     <fa-view id="home-view">
 
       <fa-modifier fa-translate="[0,0,0]" fa-align="[0,0]" fa-origin="[0,0]" fa-proportions="[1, 0.5]">
         <fa-view id="primary">
           <fa-modifier>
-            <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+            <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll">
+              <img class="display-image" src="images/upcoming_placeholder.png" alt="upcoming" />
+            </fa-surface>
           </fa-modifier>
         </fa-view>
       </fa-modifier>
@@ -100,7 +86,7 @@
       <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined, 56]">
         <fa-surface fa-background-color="'#590F0E'" class="full-height">
           <md-content class="social-bar md-padding" layout-fill layout="row" layout-align="space-between center">
-            <md-button aria-label="social button" class="md-icon-button white md-raised md-primary md-padding">
+            <md-button aria-label="social button" class="md-icon-button white md-raised md-primary md-padding" ng-click="homePageCtrl.test()">
               <md-icon md-font-icon="mdi mdi-email"></md-icon>
               <span>contact</span>
             </md-button>
@@ -127,7 +113,13 @@
   </fa-modifier>
 
   <fa-modifier fa-translate="[0,0,1]">
-    <fa-view id="home-background-1"></fa-view>
+    <fa-view id="home-background-1">
+      <fa-surface class="full-height">
+        <div class="backdrop">
+
+        </div>
+      </fa-surface>
+    </fa-view>
   </fa-modifier>
   <fa-modifier fa-translate="[0,0,1]">
     <fa-view id="home-background-2"></fa-view>
