@@ -1,0 +1,22 @@
+//fonts
+@font-face{
+  font-family: "ROADWAY";
+  src: url("../fonts/ROADWAY.ttf");
+}
+$default: "ROADWAY", sans-serif;
+
+body{
+  font-family: $default;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: $default;
+}
+
+p{
+  font-family: $default;
+}
+
+button{
+  font-family: $default;
+}

@@ -1,0 +1,135 @@
+<fa-app class="full-screen">
+
+  <fa-modifier fa-translate="[0,0,100]" fa-size="[undefined, 180]">
+    <fa-view id="home-nav-1">
+      <fa-modifier fa-align="[0,0]" fa-origin="[0,0]" fa-translate="[0,0,0]" fa-size="[undefined, 180]">
+        <fa-surface class="full-height">
+          <md-content layout-fill class="md-padding md-whiteframe-z2">
+            <div class="top-bar" layout="row" layout-align="start center">
+              <md-button aria-label="nav-button" class="md-icon-button">
+                <md-icon md-font-icon="mdi mdi-menu mdi-lg"></md-icon>
+              </md-button>
+              <span flex></span>
+              <md-button aria-label="nav-button" class="md-primary md-margin-right">
+                <md-icon md-font-icon="mdi mdi-share mdi-lg"></md-icon>
+                <md-tooltip>share</md-tooltip>
+              </md-button>
+              <md-button aria-label="nav-button" class="md-raised md-accent">
+                <md-icon md-font-icon="mdi mdi-auto-fix"></md-icon>
+                <span>donate</span>
+              </md-button>
+            </div>
+          </md-content>
+        </fa-surface>
+      </fa-modifier>
+    </fa-view>
+  </fa-modifier>
+
+  <fa-modifier>
+    <fa-view id="home-nav-2">
+      <fa-modifier>
+        <fa-surface class="full-height">
+
+        </fa-surface>
+      </fa-modifier>
+    </fa-view>
+  </fa-modifier>
+
+  <fa-modifier fa-translate="[0,0,120]">
+    <fa-view id="home-logo">
+      <fa-modifier fa-origin="[0, 0]" fa-align="[0.08,0]" fa-translate="[0,8,0]" fa-size="[100,100]">
+        <fa-image-surface fa-image-url="images/shakeslogo_transparent.png"></fa-image-surface>
+      </fa-modifier>
+    </fa-view>
+  </fa-modifier>
+
+  <fa-modifier fa-translate="[0,80,110]" fa-size="[undefined, 100]">
+    <fa-view id="home-title">
+      <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined,undefined]">
+        <fa-image-surface fa-image-url="images/text_cover.jpg"></fa-image-surface>
+      </fa-modifier>
+    </fa-view>
+  </fa-modifier>
+
+  <!-- <fa-modifier fa-translate="[0,180,50]" fa-size="[undefined, 500]">
+    <fa-grid-layout fa-options="homePageCtrl.grid.options">
+      <fa-modifier>
+        <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+      </fa-modifier>
+      <fa-modifier>
+        <fa-surface class="full-height" fa-background-color="'red'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+      </fa-modifier>
+      <fa-modifier>
+        <fa-surface class="full-height" fa-background-color="'blue'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+      </fa-modifier>
+      <fa-modifier>
+        <fa-surface class="full-height" fa-background-color="'gold'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+      </fa-modifier>
+    </fa-grid-layout>
+  </fa-modifier> -->
+  <fa-modifier fa-translate="[0,180,50]" fa-size="[undefined, 500]">
+    <fa-view id="home-view">
+
+      <fa-modifier fa-translate="[0,0,0]" fa-align="[0,0]" fa-origin="[0,0]" fa-proportions="[1, 0.5]">
+        <fa-view id="primary">
+          <fa-modifier>
+            <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+      <fa-modifier fa-translate="[0,200,0]" fa-align="[0.5,0]" fa-origin="[1,0]" fa-proportions="[50, 50]">
+        <fa-view>
+          <fa-modifier>
+            <fa-surface class="full-height" fa-background-color="'grey'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+      <fa-modifier fa-translate="[0,200,5]" fa-align="[0.5,0]" fa-origin="[0,0]" fa-proportions="[0.5, 0.5]">
+        <fa-view>
+          <fa-modifier>
+            <fa-surface class="full-height" fa-background-color="'red'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+
+    </fa-view>
+  </fa-modifier>
+
+  <fa-modifier fa-translate="[0,0,90]" fa-size="[undefined, 56]" fa-align="[0,1]" fa-origin="[0,1]">
+    <fa-view id="home-social-bar">
+      <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined, 56]">
+        <fa-surface fa-background-color="'#590F0E'" class="full-height">
+          <md-content class="social-bar md-padding" layout-fill layout="row" layout-align="space-between center">
+            <md-button aria-label="social button" class="md-icon-button white md-raised md-primary md-padding">
+              <md-icon md-font-icon="mdi mdi-email"></md-icon>
+              <span>contact</span>
+            </md-button>
+            <md-button flex aria-label="social button" class="md-icon-button white">
+              <md-icon md-font-icon="mdi mdi-facebook"></md-icon>
+            </md-button>
+            <md-button flex aria-label="social button" class="md-icon-button white">
+              <md-icon md-font-icon="mdi mdi-google-plus"></md-icon>
+            </md-button>
+            <md-button flex aria-label="social button" class="md-icon-button white">
+              <md-icon md-font-icon="mdi mdi-twitter"></md-icon>
+            </md-button>
+            <md-button flex aria-label="social button" class="md-icon-button white">
+              <md-icon md-font-icon="mdi mdi-vimeo"></md-icon>
+            </md-button>
+            <md-button flex aria-label="social button" class="md-icon-button white">
+              <md-icon md-font-icon="mdi mdi-blogger"></md-icon>
+            </md-button>
+          </md-content>
+
+        </fa-surface>
+      </fa-modifier>
+    </fa-view>
+  </fa-modifier>
+
+  <fa-modifier fa-translate="[0,0,1]">
+    <fa-view id="home-background-1"></fa-view>
+  </fa-modifier>
+  <fa-modifier fa-translate="[0,0,1]">
+    <fa-view id="home-background-2"></fa-view>
+  </fa-modifier>
+</fa-app>

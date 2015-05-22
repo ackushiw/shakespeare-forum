@@ -1,0 +1,16 @@
+//colors
+$backdrop: #590F0E;
+$white: #FFF;
+
+.white{
+  color: $white;
+}
+//body
+body{
+  background-color: $backdrop;
+}
+
+
+.social-bar.md-default-theme{
+  background-color: $backdrop;
+}
