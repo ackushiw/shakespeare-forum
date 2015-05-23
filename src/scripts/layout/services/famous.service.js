@@ -96,17 +96,17 @@ module.exports = function(app) {
 
     }
 
-    function checkLandscape(callback) {
+    function checkLandscape() {
       var defer = $q.defer();
       var width = service.dimensions.width;
       var height = service.dimensions.height;
       if(width > height) {
         service.landscape = true;
-        callback(service.landscape);
+        //callback(service.landscape);
         defer.resolve(true);
       } else {
         service.landscape = false;
-        callback(service.landscape);
+        //callback(service.landscape);
         defer.resolve(false);
       }
       return defer.promise;
@@ -136,6 +136,7 @@ module.exports = function(app) {
     }
 
     function set(width, height) {
+      dimensionsDefer = $q.defer();
       if (width && height) {
         service.dimensions = {
           width: width,

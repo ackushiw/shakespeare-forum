@@ -1,8 +1,8 @@
 <fa-app class="full-screen">
 
-  <fa-modifier fa-translate="[0,0,100]" fa-size="[undefined, 180]">
+  <fa-modifier fa-translate="[0,0,100]" fa-size="homePageCtrl.navSize.get()">
     <fa-view id="home-nav-1">
-      <fa-modifier fa-align="[0,0]" fa-origin="[0,0]" fa-translate="[0,0,0]" fa-size="[undefined, 180]">
+      <fa-modifier fa-align="[0,0]" fa-origin="[0,0]" fa-translate="[0,0,0]" fa-size="homePageCtrl.navSize.get()">
         <fa-surface class="full-height">
           <md-content layout-fill class="md-padding md-whiteframe-z2">
             <div class="top-bar" layout="row" layout-align="start center">
@@ -37,15 +37,15 @@
 
   <fa-modifier fa-translate="[0,0,120]">
     <fa-view id="home-logo">
-      <fa-modifier fa-origin="[0, 0]" fa-align="[0.08,0]" fa-translate="[0,8,0]" fa-size="[100,100]">
+      <fa-modifier fa-origin="[0, 0]" fa-align="[0,0]" fa-translate="homePageCtrl.logo.translate.get()" fa-size="homePageCtrl.logo.size.get()">
         <fa-image-surface fa-image-url="images/shakeslogo_transparent.png"></fa-image-surface>
       </fa-modifier>
     </fa-view>
   </fa-modifier>
 
-  <fa-modifier fa-translate="[0,80,110]" fa-size="[undefined, 100]">
+  <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined, 180]">
     <fa-view id="home-title">
-      <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined,undefined]">
+      <fa-modifier fa-translate="homePageCtrl.title.translate.get()" fa-size="homePageCtrl.title.size.get()">
         <fa-image-surface fa-image-url="images/text_cover.jpg"></fa-image-surface>
       </fa-modifier>
     </fa-view>
@@ -115,7 +115,7 @@
   <fa-modifier fa-translate="[0,0,1]">
     <fa-view id="home-background-1">
       <fa-surface class="full-height">
-        <div class="backdrop">
+        <div class="backdrop" resize action="homePageCtrl.updateResponsive($event)">
 
         </div>
       </fa-surface>
