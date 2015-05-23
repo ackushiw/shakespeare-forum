@@ -51,10 +51,10 @@
     </fa-view>
   </fa-modifier>
 
-  <fa-modifier fa-translate="[0,180,50]" fa-size="[undefined, 500]">
+  <fa-modifier fa-translate="homePageCtrl.homeView.translate.get()" fa-size="homePageCtrl.homeView.size.get()">
     <fa-view id="home-view">
 
-      <fa-modifier fa-translate="[0,0,0]" fa-align="[0,0]" fa-origin="[0,0]" fa-proportions="[1, 0.5]">
+      <fa-modifier fa-translate="homePageCtrl.primary.translate.get()" fa-size="homePageCtrl.primary.size.get()" fa-align="homePageCtrl.primary.align.get()" fa-origin="homePageCtrl.primary.origin.get()">
         <fa-view id="primary">
           <fa-modifier>
             <fa-surface class="full-height" fa-background-color="'white'" fa-pipe-to="homePageCtrl.eventsScroll">
@@ -63,16 +63,16 @@
           </fa-modifier>
         </fa-view>
       </fa-modifier>
-      <fa-modifier fa-translate="[0,200,0]" fa-align="[0.5,0]" fa-origin="[1,0]" fa-proportions="[50, 50]">
-        <fa-view>
-          <fa-modifier>
+      <fa-modifier >
+        <fa-view id="secondView">
+          <fa-modifier fa-translate="homePageCtrl.secondView.translate.get()" fa-align="homePageCtrl.secondView.align.get()" fa-origin="homePageCtrl.secondView.origin.get()" fa-size="homePageCtrl.secondView.size.get()">
             <fa-surface class="full-height" fa-background-color="'grey'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
           </fa-modifier>
         </fa-view>
       </fa-modifier>
-      <fa-modifier fa-translate="[0,200,5]" fa-align="[0.5,0]" fa-origin="[0,0]" fa-proportions="[0.5, 0.5]">
-        <fa-view>
-          <fa-modifier>
+      <fa-modifier >
+        <fa-view id="thirdView">
+          <fa-modifier fa-translate="homePageCtrl.thirdView.translate.get()" fa-align="homePageCtrl.thirdView.align.get()" fa-origin="homePageCtrl.thirdView.origin.get()" fa-size="homePageCtrl.thirdView.size.get()">
             <fa-surface class="full-height" fa-background-color="'red'" fa-pipe-to="homePageCtrl.eventsScroll"></fa-surface>
           </fa-modifier>
         </fa-view>

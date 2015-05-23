@@ -17,16 +17,26 @@ module.exports = function(app) {
     var Transitionable = $famous['famous/transitions/Transitionable'];
     var Easing = $famous['famous/transitions/Easing'];
     var defaultEasing = {
-          curve: Easing.outExpo,
-          duration: 200
-        };
+      curve: Easing.outExpo,
+      duration: 200
+    };
     var EventHandler = $famous['famous/core/EventHandler'];
     vm.eventsScroll = new EventHandler();
+    vm.homeView = {
+      translate: new Transitionable([0, 0, 0]),
+      size: new Transitionable([0, 0])
+    };
 
+    function setHomeView(homeView) {
+      console.log('setting homeView', homeView);
+      vm.homeView.translate.set(homeView.translate, defaultEasing);
+      vm.homeView.size.set(homeView.size, defaultEasing);
+    }
     vm.logo = {
       translate: new Transitionable([0, 0, 0]),
       size: new Transitionable([0, 0])
     };
+
     function setLogo(logo) {
       //console.log('setting logo', logo);
       vm.logo.translate.set(logo.translate, defaultEasing);
@@ -39,10 +49,56 @@ module.exports = function(app) {
       vm.navSize.set(nav.size, defaultEasing);
     }
 
+    vm.primary = {
+      translate: new Transitionable([0, 0, 0]),
+      size: new Transitionable([0, 0]),
+      align: new Transitionable([0, 0]),
+      origin: new Transitionable([0, 0])
+    };
+
+    function setPrimary(primary) {
+      //console.log('setting title', title);
+      vm.primary.translate.set(primary.translate, defaultEasing);
+      vm.primary.size.set(primary.size, defaultEasing);
+      vm.primary.align.set(primary.align, defaultEasing);
+      vm.primary.origin.set(primary.origin, defaultEasing);
+    }
+
+    vm.secondView = {
+      translate: new Transitionable([0, 0, 0]),
+      size: new Transitionable([0, 0]),
+      align: new Transitionable([0, 0]),
+      origin: new Transitionable([0, 0])
+    };
+
+    function setSecondView(secondView) {
+      console.log('setting secondView', secondView);
+      vm.secondView.translate.set(secondView.translate, defaultEasing);
+      vm.secondView.size.set(secondView.size, defaultEasing);
+      vm.secondView.align.set(secondView.align, defaultEasing);
+      vm.secondView.origin.set(secondView.origin, defaultEasing);
+    }
+
+    vm.thirdView = {
+      translate: new Transitionable([0, 0, 0]),
+      size: new Transitionable([0, 0]),
+      align: new Transitionable([0, 0]),
+      origin: new Transitionable([0, 0])
+    };
+
+    function setThirdView(thirdView) {
+      console.log('setting thirdView', thirdView);
+      vm.thirdView.translate.set(thirdView.translate, defaultEasing);
+      vm.thirdView.size.set(thirdView.size, defaultEasing);
+      vm.thirdView.align.set(thirdView.align, defaultEasing);
+      vm.thirdView.origin.set(thirdView.origin, defaultEasing);
+    }
+
     vm.title = {
       translate: new Transitionable([0, 0, 0]),
       size: new Transitionable([0, 0])
     };
+
     function setTitle(title) {
       //console.log('setting title', title);
       vm.title.translate.set(title.translate, defaultEasing);
@@ -64,6 +120,18 @@ module.exports = function(app) {
       });
       responsive.title().then(function(titleSettings) {
         setTitle(titleSettings);
+      });
+      responsive.homeView().then(function(homeViewSettings) {
+        setHomeView(homeViewSettings);
+      });
+      responsive.primary().then(function(primarySettings) {
+        setPrimary(primarySettings);
+      });
+      responsive.secondView().then(function(secondViewSettings) {
+        setSecondView(secondViewSettings);
+      });
+      responsive.thirdView().then(function(thirdViewSettings) {
+        setThirdView(thirdViewSettings);
       });
     };
 
