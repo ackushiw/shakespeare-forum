@@ -161,7 +161,6 @@ module.exports = function(app) {
       }
     };
 
-
     vm.updateResponsive = function(event) {
       responsive.logo().then(function(logoSettings) {
         setLogo(logoSettings);
@@ -186,7 +185,9 @@ module.exports = function(app) {
       });
       responsive.socialbar().then(function(socialbarSettings) {
         setSocialbar(socialbarSettings);
+
       });
+      vm.contactPage = false;
     };
 
     homePageCtrl.directivename = directivename;
