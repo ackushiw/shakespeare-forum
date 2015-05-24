@@ -1,55 +1,69 @@
 <fa-app class="full-screen">
 
   <fa-modifier fa-translate="[0,0,100]" fa-size="homePageCtrl.navSize.get()">
-    <fa-view id="home-nav-1">
-      <fa-modifier fa-align="[0,0]" fa-origin="[0,0]" fa-translate="[0,0,0]" fa-size="homePageCtrl.navSize.get()">
-        <fa-surface class="full-height">
-          <md-content layout-fill class="md-padding md-whiteframe-z2">
-            <div class="top-bar" layout="row" layout-align="start center">
-              <md-button aria-label="nav-button" class="md-icon-button">
-                <md-icon md-font-icon="mdi mdi-menu mdi-lg"></md-icon>
-              </md-button>
-              <span flex></span>
-              <md-button aria-label="nav-button" class="md-primary md-margin-right">
-                <md-icon md-font-icon="mdi mdi-share mdi-lg"></md-icon>
-                <md-tooltip>share</md-tooltip>
-              </md-button>
-              <md-button aria-label="nav-button" class="md-raised md-accent">
-                <md-icon md-font-icon="mdi mdi-auto-fix"></md-icon>
-                <span>donate</span>
-              </md-button>
-            </div>
-          </md-content>
-        </fa-surface>
-      </fa-modifier>
-    </fa-view>
-  </fa-modifier>
+  <fa-view id="home-nav-1">
+    <fa-modifier fa-align="[0,0]" fa-origin="[0,0]" fa-translate="[0,0,0]" fa-size="homePageCtrl.navSize.get()">
+      <fa-surface class="full-height">
+        <md-content layout-fill class="md-padding md-whiteframe-z2">
+          <div class="top-bar" layout="row" layout-align="start center">
+            <md-button aria-label="nav-button" class="md-icon-button" hide-gt-md ng-click="homePageCtrl.openSidenav()">
+              <md-icon md-font-icon="mdi mdi-menu mdi-lg"></md-icon>
+            </md-button>
+            <span flex></span>
 
-  <fa-modifier>
-    <fa-view id="home-nav-2">
-      <fa-modifier>
-        <fa-surface class="full-height">
+          </div>
+        </md-content>
+      </fa-surface>
+    </fa-modifier>
+    <fa-modifier fa-translate="[0,0,50]" fa-size="[300,56]" fa-align="[1,0]" fa-origin="[1,0]">
+      <fa-surface>
+        <div style="float:right;padding:8px;">
 
-        </fa-surface>
-      </fa-modifier>
-    </fa-view>
-  </fa-modifier>
 
-  <fa-modifier fa-translate="[0,0,120]">
-    <fa-view id="home-logo">
-      <fa-modifier fa-origin="[0, 0]" fa-align="[0,0]" fa-translate="homePageCtrl.logo.translate.get()" fa-size="homePageCtrl.logo.size.get()">
-        <fa-image-surface fa-image-url="images/shakeslogo_transparent.png"></fa-image-surface>
-      </fa-modifier>
-    </fa-view>
-  </fa-modifier>
+        <md-button hide-gt-md aria-label="nav-button" class="md-primary md-margin-right" ng-click="homeCtrl.toggleFullScreen()">
+          <md-icon ng-if="!homePageCtrl.fullscreen" md-font-icon="mdi mdi-fullscreen mdi-lg"></md-icon>
+          <md-icon ng-if="homePageCtrl.fullscreen" class="md-warn" md-font-icon="mdi mdi-fullscreen-exit mdi-lg"></md-icon>
+          <md-tooltip >toggle fullscreen</md-tooltip>
+        </md-button>
+        <md-button aria-label="nav-button" class="md-primary md-margin-right">
+          <md-icon md-font-icon="mdi mdi-share mdi-lg"></md-icon>
+          <md-tooltip>share</md-tooltip>
+        </md-button>
+        <md-button aria-label="nav-button" class="md-raised md-accent">
+          <md-icon md-font-icon="mdi mdi-auto-fix"></md-icon>
+          <span>donate</span>
+        </md-button>
+      </div>
+      </fa-surface>
+    </fa-modifier>
+  </fa-view>
+</fa-modifier>
 
-  <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined, 180]">
-    <fa-view id="home-title">
-      <fa-modifier fa-translate="homePageCtrl.title.translate.get()" fa-size="homePageCtrl.title.size.get()">
-        <fa-image-surface fa-image-url="images/text_cover.jpg"></fa-image-surface>
-      </fa-modifier>
-    </fa-view>
-  </fa-modifier>
+<fa-modifier>
+  <fa-view id="home-nav-2">
+    <fa-modifier>
+      <fa-surface class="full-height">
+
+      </fa-surface>
+    </fa-modifier>
+  </fa-view>
+</fa-modifier>
+
+<fa-modifier fa-translate="[0,0,120]">
+  <fa-view id="home-logo">
+    <fa-modifier fa-origin="[0, 0]" fa-align="[0,0]" fa-translate="homePageCtrl.logo.translate.get()" fa-size="homePageCtrl.logo.size.get()">
+      <fa-image-surface fa-image-url="images/shakeslogo_transparent.png"></fa-image-surface>
+    </fa-modifier>
+  </fa-view>
+</fa-modifier>
+
+<fa-modifier fa-translate="[0,0,0]" fa-size="homePageCtrl.title.size.get()">
+  <fa-view id="home-title">
+    <fa-modifier fa-translate="homePageCtrl.title.translate.get()" fa-size="homePageCtrl.title.size.get()">
+      <fa-image-surface fa-image-url="images/text_cover.jpg"></fa-image-surface>
+    </fa-modifier>
+  </fa-view>
+</fa-modifier>
 
   <fa-modifier fa-translate="homePageCtrl.homeView.translate.get()" fa-size="homePageCtrl.homeView.size.get()">
     <fa-view id="home-view">
@@ -81,14 +95,18 @@
     </fa-view>
   </fa-modifier>
 
-  <fa-modifier fa-translate="[0,0,90]" fa-size="[undefined, 56]" fa-align="[0,1]" fa-origin="[0,1]">
+  <fa-modifier fa-translate="homePageCtrl.socialbar.translate.get()" fa-size="homePageCtrl.socialbar.size.get()" fa-align="homePageCtrl.socialbar.align.get()" fa-origin="homePageCtrl.socialbar.origin.get()">
     <fa-view id="home-social-bar">
-      <fa-modifier fa-translate="[0,0,0]" fa-size="[undefined, 56]">
+      <fa-modifier fa-translate="[0,0,0]" fa-size="homePageCtrl.socialbar.size.get()">
         <fa-surface fa-background-color="'#590F0E'" class="full-height">
-          <md-content class="social-bar md-padding" layout-fill layout="row" layout-align="space-between center">
-            <md-button aria-label="social button" class="md-icon-button white md-raised md-primary md-padding" ng-click="homePageCtrl.test()">
+          <md-content class="social-bar md-padding" layout-fill> <div layout="row" layout-align="space-between center">
+            <md-button ng-show="!homePageCtrl.contactPage" aria-label="social button" hide-gt-md class="md-icon-button white md-raised md-primary md-padding" ng-click="homePageCtrl.toggleContactPage(homePageCtrl.socialbar)" ui-sref="home.contact">
               <md-icon md-font-icon="mdi mdi-email"></md-icon>
               <span>contact</span>
+            </md-button>
+            <md-button ng-hide="!homePageCtrl.contactPage" aria-label="close button" hide-gt-md class="md-icon-button white md-warn md-padding" ng-click="homePageCtrl.toggleContactPage(homePageCtrl.socialbar)" ui-sref="home">
+              <md-icon md-font-icon="mdi mdi-close"></md-icon>
+              <span>close</span>
             </md-button>
             <md-button flex aria-label="social button" class="md-icon-button white">
               <md-icon md-font-icon="mdi mdi-facebook"></md-icon>
@@ -105,6 +123,11 @@
             <md-button flex aria-label="social button" class="md-icon-button white">
               <md-icon md-font-icon="mdi mdi-blogger"></md-icon>
             </md-button>
+          </div>
+          <div class="contact" ui-view="contact">
+            <md-input-container class="md-accent"><label>email</label><input type="email" ng-model="email"></md-input-container>
+
+          </div>
           </md-content>
 
         </fa-surface>
@@ -123,5 +146,53 @@
   </fa-modifier>
   <fa-modifier fa-translate="[0,0,1]">
     <fa-view id="home-background-2"></fa-view>
+  </fa-modifier>
+  <fa-modifier fa-translate="[0,0,500]" fa-size="[undefined,undefined]" fa-align="homePageCtrl.sidenav.align.get()" fa-origin="homePageCtrl.sidenav.origin.get()">
+    <fa-modifier fa-size="[300,undefined]">
+    <fa-view id="sidenav">
+      <fa-surface class="full-height" fa-background-color="'white'">
+        <md-content layout-fill class="md-whiteframe-z2">
+
+        </md-content>
+      </fa-surface>
+      <fa-modifier fa-translate="[0,0,5]" fa-size="[300,300]">
+        <fa-view id="sidenav-nav-1">
+          <fa-modifier fa-translate="[0,0,50]" fa-size="[150,56]" fa-align="[1,0]" fa-origin="[1,0]">
+            <fa-surface>
+              <div style="float:right;padding:8px;">
+
+                  <md-button aria-label="close-sidenav-button" class="md-icon-button" ng-click="homePageCtrl.closeSidenav()">
+                    <md-icon md-font-icon="mdi mdi-arrow-left"></md-icon>
+
+                  </md-button>
+                </div>
+
+            </fa-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+
+
+      <fa-modifier fa-translate="[0,0,120]">
+        <fa-view id="sidenav-logo">
+          <fa-modifier fa-origin="[0, 0]" fa-align="[0,0]" fa-translate="[25,8,20]" fa-size="[70,70]">
+            <fa-image-surface fa-image-url="images/shakeslogo_transparent.png"></fa-image-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+
+      <fa-modifier fa-translate="[0,0,0]" fa-size="[300,70]">
+        <fa-view id="sidenav-title">
+          <fa-modifier fa-translate="[0,56,10]" fa-size="[300,60]">
+            <fa-image-surface fa-image-url="images/text_cover.jpg"></fa-image-surface>
+          </fa-modifier>
+        </fa-view>
+      </fa-modifier>
+
+    </fa-view>
+  </fa-modifier>
+  <fa-modifier fa-translate="[0,0,-5]" fa-opacity="homePageCtrl.sidenav.opacity.get()">
+    <fa-surface fa-background-color="'black'" class="full-height" ng-click="homePageCtrl.closeSidenav()"></fa-surface>
+  </fa-modifier>
   </fa-modifier>
 </fa-app>

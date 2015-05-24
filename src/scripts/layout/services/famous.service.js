@@ -16,6 +16,7 @@ module.exports = function(app) {
     var landscapePromise = landscapeDefer.promise;
 
     var breakPoints = [ // width in px
+      360, //tiny
       600, //mobile
       960, //tablet portrait
       1200 //tablet landscape
@@ -30,6 +31,7 @@ module.exports = function(app) {
     service.init = true; //fresh View
 
     service.device = {
+      xs: false,  // = tiny
       sm: false, // > mobile
       md: false, // > tablet portrait
       lg: false, // > tablet landscape
@@ -44,7 +46,13 @@ module.exports = function(app) {
       var gtSm = false;
       var gtMd = false;
       var gtLg = desktop;
-      if(mobile) {
+      var xs = false;
+      if (!mobile && !tabletP && !tabletL && !desktop) {
+        xs = true;
+        gtSm = false;
+        gtMd = false;
+        gtLg = false;
+      } else if(mobile) {
         gtSm = false;
         gtMd = false;
         gtLg = false;
@@ -63,6 +71,7 @@ module.exports = function(app) {
         }
       }
       service.device = {
+        xs: xs, // =tiny
         sm: mobile,    // > mobile
         md: tabletP,   // > tablet portrait
         lg: tabletL,   // > tablet landscape
@@ -78,13 +87,16 @@ module.exports = function(app) {
       //dimensionsPromise.then(function(dimensions){
         //$log.log('checkDevice', dimensions);
         //var width = service.dimensions.width;
-        if(width < breakPoints[0]) {
+        if (width < breakPoints[0]) {
+          $log.log('sm', width);
+          setDevice(false, false, false, false, callback);
+        } else if(width < breakPoints[1]) {
           $log.log('sm', width);
           setDevice(true, false, false, false, callback);
-        } else if(width < breakPoints[1]) {
+        } else if(width < breakPoints[2]) {
           $log.log('md', width);
           setDevice(false, true, false, false, callback);
-        } else if (width < breakPoints[2]) {
+        } else if (width < breakPoints[3]) {
           $log.log('lg', width);
           setDevice(false, false, true, false, callback);
         } else {
@@ -129,8 +141,8 @@ module.exports = function(app) {
 
     function getDevice() {
       var defer = $q.defer();
-      devicePromise.then(function (value) {
-        defer.resolve(service.device);
+      devicePromise.then(function () {
+        defer.resolve(service.device, service.dimensions);
       });
       return defer.promise;
     }
@@ -168,6 +180,8 @@ module.exports = function(app) {
       get: get,
       getDevice: getDevice,
       getLandscape: checkLandscape,
+      getWidth: service.dimensions.width,
+      getHeight: service.dimensions.height,
       set: set
     };
 

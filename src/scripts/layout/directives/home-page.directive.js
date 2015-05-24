@@ -5,8 +5,8 @@ var directivename = 'homePage';
 module.exports = function(app) {
 
   // controller
-  var controllerDeps = ['$famous', 'main.layout.famous', 'main.layout.responsive', '$log'];
-  var controller = function($famous, famousLayout, responsive, $log) {
+  var controllerDeps = ['$famous', 'main.layout.famous', 'main.layout.responsive', '$mdSidenav', '$window', '$timeout', '$log'];
+  var controller = function($famous, famousLayout, responsive, $mdSidenav, $window, $timeout, $log) {
     var homePageCtrl = this;
     var vm = homePageCtrl;
 
@@ -18,7 +18,7 @@ module.exports = function(app) {
     var Easing = $famous['famous/transitions/Easing'];
     var defaultEasing = {
       curve: Easing.outExpo,
-      duration: 200
+      duration: 500
     };
     var EventHandler = $famous['famous/core/EventHandler'];
     vm.eventsScroll = new EventHandler();
@@ -28,7 +28,7 @@ module.exports = function(app) {
     };
 
     function setHomeView(homeView) {
-      console.log('setting homeView', homeView);
+      //console.log('setting homeView', homeView);
       vm.homeView.translate.set(homeView.translate, defaultEasing);
       vm.homeView.size.set(homeView.size, defaultEasing);
     }
@@ -72,7 +72,7 @@ module.exports = function(app) {
     };
 
     function setSecondView(secondView) {
-      console.log('setting secondView', secondView);
+      //console.log('setting secondView', secondView);
       vm.secondView.translate.set(secondView.translate, defaultEasing);
       vm.secondView.size.set(secondView.size, defaultEasing);
       vm.secondView.align.set(secondView.align, defaultEasing);
@@ -87,11 +87,26 @@ module.exports = function(app) {
     };
 
     function setThirdView(thirdView) {
-      console.log('setting thirdView', thirdView);
+      //console.log('setting thirdView', thirdView);
       vm.thirdView.translate.set(thirdView.translate, defaultEasing);
       vm.thirdView.size.set(thirdView.size, defaultEasing);
       vm.thirdView.align.set(thirdView.align, defaultEasing);
       vm.thirdView.origin.set(thirdView.origin, defaultEasing);
+    }
+
+    vm.socialbar = {
+      translate: new Transitionable([0, 0, 0]),
+      size: new Transitionable([0, 0]),
+      align: new Transitionable([0, 0]),
+      origin: new Transitionable([0, 0])
+    };
+
+    function setSocialbar(socialbar) {
+      //console.log('setting socialbar', socialbar);
+      vm.socialbar.translate.set(socialbar.translate, defaultEasing);
+      vm.socialbar.size.set(socialbar.size, defaultEasing);
+      vm.socialbar.align.set(socialbar.align, defaultEasing);
+      vm.socialbar.origin.set(socialbar.origin, defaultEasing);
     }
 
     vm.title = {
@@ -105,11 +120,47 @@ module.exports = function(app) {
       vm.title.size.set(title.size, defaultEasing);
     }
 
-    vm.test = function() {
-      famousLayout.getDevice().then(function(data) {
-        $log.log('button test', data);
+    vm.sidenav = {
+      align: new Transitionable([-1, 0]),
+      origin: new Transitionable([1, 0]),
+      opacity: new Transitionable(0)
+    };
+    vm.openSidenav = function() {
+      console.log('open seasame');
+      vm.sidenav.align.set([0, 0], defaultEasing);
+      vm.sidenav.origin.set([0, 0], defaultEasing);
+      vm.sidenav.opacity.set(0.3, {
+        curve: Easing.inExpo,
+        duration: 500
       });
     };
+    vm.closeSidenav = function() {
+      vm.sidenav.align.set([-1, 0], defaultEasing);
+      vm.sidenav.origin.set([1, 0], defaultEasing);
+      vm.sidenav.opacity.set(0, {
+        curve: Easing.inExpo,
+        duration: 200
+      });
+    };
+    vm.contactPage = false;
+    vm.contactPageOrigin = vm.socialbar;
+    vm.toggleContactPage = function(origin) {
+      vm.contactPageOrigin = origin;
+      if(vm.contactPage) {
+        vm.socialbar.translate.set([0, 0, 90], defaultEasing);
+        vm.socialbar.size.set([undefined, 56], defaultEasing);
+        vm.socialbar.align.set([0, 1], defaultEasing);
+        vm.socialbar.origin.set([0, 1], defaultEasing);
+        vm.contactPage = false;
+      } else {
+        vm.socialbar.translate.set([0, 0, 400], defaultEasing);
+        vm.socialbar.size.set([undefined, 500], defaultEasing);
+        vm.socialbar.align.set([0, 1], defaultEasing);
+        vm.socialbar.origin.set([0, 1], defaultEasing);
+        vm.contactPage = true;
+      }
+    };
+
 
     vm.updateResponsive = function(event) {
       responsive.logo().then(function(logoSettings) {
@@ -133,6 +184,9 @@ module.exports = function(app) {
       responsive.thirdView().then(function(thirdViewSettings) {
         setThirdView(thirdViewSettings);
       });
+      responsive.socialbar().then(function(socialbarSettings) {
+        setSocialbar(socialbarSettings);
+      });
     };
 
     homePageCtrl.directivename = directivename;
@@ -146,9 +200,6 @@ module.exports = function(app) {
   var directive = function(famousLayout) {
     return {
       restrict: 'AE',
-      scope: {
-        title: '@' // '@' reads attribute value, '=' provides 2-way binding, '&" works with functions
-      },
       controller: controller,
       controllerAs: 'homePageCtrl',
       bindToController: true,

@@ -26,6 +26,19 @@ module.exports = function(namespace) {
         template: require('./views/home.html'),
         controller: fullname + '.main',
         controllerAs: 'homeCtrl'
+      }).state('home.contact', {
+        url: 'contact',
+        views: {
+          'contact': {
+            template: require('./views/contact.html'),
+            controller: ['$scope', function($scope) {
+              var vm = this;
+
+            }],
+            controllerAs: 'contactCtrl'
+          }
+        }
+
       });
     }
   ]);
